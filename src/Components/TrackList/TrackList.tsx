@@ -1,6 +1,18 @@
 import React from "react"
 import "./TrackList.css"
+import { Track } from "../Track/Track"
+import { TrackType } from "../../types"
 
-export const TrackList = () => {
-  return <div className="TrackList">1</div>
+type Props = {
+  searchResults: TrackType[]
+}
+
+export const TrackList = (props: Props) => {
+  return (
+    <div className="TrackList">
+      {props.searchResults.map(track => {
+        return <Track searchResults={track} key={track.id} />
+      })}
+    </div>
+  )
 }

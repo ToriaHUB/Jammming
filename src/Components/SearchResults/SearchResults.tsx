@@ -11,7 +11,7 @@ export const SearchResults = (props: Props) => {
   return (
     <div className="SearchResults">
       <h2>Results</h2>
-      <TrackList searchResults={props.searchResults} />
+      <TrackList tracks={props.searchResults} />
     </div>
   )
 }

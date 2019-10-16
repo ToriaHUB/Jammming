@@ -9,10 +9,11 @@ type Props = {
 }
 
 export const Playlist = (props: Props) => {
+  const { playlistName, playlistTracks } = props
   return (
     <div className="Playlist">
-      <input defaultValue={"New Playlist"} />
-      {/*<TrackList />*/}
+      <input defaultValue={playlistName} />
+      <TrackList tracks={playlistTracks} />
       <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>
   )

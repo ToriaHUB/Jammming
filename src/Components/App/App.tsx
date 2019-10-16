@@ -4,6 +4,7 @@ import { SearchBar } from "../SearchBar/SearchBar"
 import { SearchResults } from "../SearchResults/SearchResults"
 import { Playlist } from "../Playlist/Playlist"
 import { TrackType } from "../../types"
+import { TrackList } from "../TrackList/TrackList"
 
 function App() {
   //TODO: Replace searchResults mock Data

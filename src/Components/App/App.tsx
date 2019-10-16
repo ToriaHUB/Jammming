@@ -6,7 +6,7 @@ import { Playlist } from "../Playlist/Playlist"
 import { TrackType } from "../../types"
 
 function App() {
-  //TODO: Delete mock Data
+  //TODO: Replace searchResults mock Data
   const [searchResults, setSearchResults] = useState<TrackType[]>([
     {
       name: "Fail",
@@ -20,6 +20,25 @@ function App() {
       artist: "Imagine Dragons",
       album: "Zero",
       id: "125",
+      isRemoval: true,
+    },
+  ])
+  //TODO: Replace  playlistName mock Data
+  const [playlistName, setplaylistName] = useState<string>("My Playlist")
+  //TODO: Replace  playlistTracks mock Data
+  const [playlistTracks, setplaylistTracks] = useState<TrackType[]>([
+    {
+      name: "name1",
+      artist: "artist1",
+      album: "album1",
+      id: "id",
+      isRemoval: false,
+    },
+    {
+      name: "name2",
+      artist: "artist2",
+      album: "album3",
+      id: "id",
       isRemoval: true,
     },
   ])

@@ -5,19 +5,24 @@ import { SearchResults } from "../SearchResults/SearchResults"
 import { Playlist } from "../Playlist/Playlist"
 import { TrackType } from "../../types"
 
-//TODO: Delete mock Data
-const mockData = [
-  {
-    name: "Ivan",
-    artist: "Dorn",
-    album: "Wings",
-    id: "125",
-    isRemoval: false,
-  },
-]
 function App() {
-  //TODO: Add data from server
-  const [searchResults, setSearchResults] = useState<TrackType[]>([])
+  //TODO: Delete mock Data
+  const [searchResults, setSearchResults] = useState<TrackType[]>([
+    {
+      name: "Fail",
+      artist: "Ivan Dorn",
+      album: "Wings",
+      id: "125",
+      isRemoval: false,
+    },
+    {
+      name: "Birds",
+      artist: "Imagine Dragons",
+      album: "Zero",
+      id: "125",
+      isRemoval: true,
+    },
+  ])
 
   return (
     <div>
@@ -27,7 +32,7 @@ function App() {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={mockData} />
+          <SearchResults searchResults={searchResults} />
           <Playlist />
         </div>
       </div>

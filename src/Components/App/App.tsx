@@ -4,7 +4,6 @@ import { SearchBar } from "../SearchBar/SearchBar"
 import { SearchResults } from "../SearchResults/SearchResults"
 import { Playlist } from "../Playlist/Playlist"
 import { TrackType } from "../../types"
-import { TrackList } from "../TrackList/TrackList"
 
 function App() {
   //TODO: Replace searchResults mock Data
@@ -26,6 +25,7 @@ function App() {
   ])
   //TODO: Replace  playlistName mock Data
   const [playlistName, setplaylistName] = useState<string>("My Playlist")
+
   //TODO: Replace  playlistTracks mock Data
   const [playlistTracks, setplaylistTracks] = useState<TrackType[]>([
     {
@@ -43,6 +43,10 @@ function App() {
       isRemoval: true,
     },
   ])
+  const addTrack = (track: TrackType): void => {
+    const result = playlistTracks.find(savedTrack => savedTrack.id === track.id)
+    if (result) setplaylistTracks([...playlistTracks, result])
+  }
 
   return (
     <div>

@@ -4,6 +4,7 @@ import { SearchBar } from "../SearchBar/SearchBar"
 import { SearchResults } from "../SearchResults/SearchResults"
 import { Playlist } from "../Playlist/Playlist"
 import { TrackType } from "../../types"
+import { userCustomTrack } from "../../types"
 
 function App() {
   //TODO: Replace searchResults mock Data
@@ -13,39 +14,57 @@ function App() {
       artist: "Ivan Dorn",
       album: "Wings",
       id: "125",
-      isRemoval: false,
     },
     {
       name: "Birds",
       artist: "Imagine Dragons",
       album: "Zero",
       id: "125",
-      isRemoval: true,
     },
   ])
   //TODO: Replace  playlistName mock Data
-  const [playlistName, setplaylistName] = useState<string>("My Playlist")
+  const [playlistName, setPlaylistName] = useState<string>("My Playlist")
 
   //TODO: Replace  playlistTracks mock Data
-  const [playlistTracks, setplaylistTracks] = useState<TrackType[]>([
+  const [playlistTracks, setPlaylistTracks] = useState<TrackType[]>([
     {
       name: "name1",
       artist: "artist1",
       album: "album1",
       id: "id",
-      isRemoval: false,
     },
     {
       name: "name2",
       artist: "artist2",
       album: "album3",
       id: "id",
-      isRemoval: true,
     },
   ])
+  /**
+   *Check if the current song is in the playlistTracks state.
+   If the id is new, add the song to the end of the playlist.
+   Set the new state of the playlist
+   * @param track
+   */
   const addTrack = (track: TrackType): void => {
-    const result = playlistTracks.find(savedTrack => savedTrack.id === track.id)
-    if (result) setplaylistTracks([...playlistTracks, result])
+    const result: TrackType | undefined = playlistTracks.find(savedTrack => savedTrack.id === track.id)
+    if (result) setPlaylistTracks([...playlistTracks, result])
+  }
+  /**
+   * If the current song is in the playlistTracks state, return true (button with -)
+   * @param track
+   */
+  const getRemovalStatus = (track: TrackType): boolean | undefined => {
+    const status = playlistTracks.find(savedTrack => savedTrack.id === track.id)
+    return Boolean(status)
+  }
+  /**
+   * Return a new object with removal status
+   * @param track
+   */
+  const getUserCustomTrack = (track: TrackType): userCustomTrack => {
+    const isRemoval = getRemovalStatus(track)
+    return { track, isRemoval }
   }
 
   return (
@@ -56,8 +75,19 @@ function App() {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} />
-          <Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
+          <SearchResults
+            searchResults={searchResults.map(track => {
+              return getUserCustomTrack(track)
+            })}
+            onAdd={addTrack}
+          />
+          <Playlist
+            playlistName={playlistName}
+            playlistTracks={playlistTracks.map(track => {
+              return getUserCustomTrack(track)
+            })}
+            onAdd={addTrack}
+          />
         </div>
       </div>
     </div>

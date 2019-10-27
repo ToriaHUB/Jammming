@@ -1,26 +1,23 @@
 import React from "react"
 import "./Track.css"
-import { TrackType } from "../../types"
+import { TrackType, userCustomTrack } from "../../types"
 
 type Props = {
-  searchResults: TrackType
+  track: userCustomTrack
+  onAdd: (track: TrackType) => void
 }
 
 export const Track = (props: Props) => {
-  const { searchResults } = props
+  const { track, isRemoval } = props.track
   return (
     <div className="Track">
       <div className="Track-information">
-        <h3>{searchResults.name} </h3>
+        <h3>{track.name} </h3>
         <p>
-          {searchResults.artist} | {searchResults.album}{" "}
+          {track.artist} | {track.album}{" "}
         </p>
       </div>
-      {searchResults.isRemoval ? (
-        <button className="Track-action">-</button>
-      ) : (
-        <button className="Track-action">+</button>
-      )}
+      {isRemoval ? <button className="Track-action">-</button> : <button className="Track-action">+</button>}
     </div>
   )
 }

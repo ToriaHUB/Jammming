@@ -1,17 +1,18 @@
 import React from "react"
 import "./TrackList.css"
 import { Track } from "../Track/Track"
-import { TrackType } from "../../types"
+import { TrackType, userCustomTrack } from "../../types"
 
 type Props = {
-  tracks: TrackType[]
+  tracks: userCustomTrack[]
+  onAdd: (track: TrackType) => void
 }
 
 export const TrackList = (props: Props) => {
   return (
     <div className="TrackList">
       {props.tracks.map(track => {
-        return <Track searchResults={track} key={track.id} />
+        return <Track track={track} key={track.track.id} onAdd={props.onAdd} />
       })}
     </div>
   )

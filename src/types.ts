@@ -3,5 +3,8 @@ export type TrackType = {
   artist: string
   album: string
   id: string
-  isRemoval: boolean
+}
+export type userCustomTrack = {
+  track: TrackType
+  isRemoval: boolean | undefined
 }

@@ -40,6 +40,14 @@ function App() {
       setPlaylistTracks([...playlistTracks, track])
     }
   }
+  const removeTrack = (track: TrackType): void => {
+    const result = playlistTracks.filter(savedTrack => {
+      return savedTrack.id !== track.id
+    })
+    if (Boolean(result)) {
+      setPlaylistTracks(result)
+    }
+  }
   /**
    * If the current song is in the playlistTracks state, return true (button with -)
    * @param track
@@ -70,6 +78,7 @@ function App() {
               return getUserCustomTrack(track)
             })}
             onAdd={addTrack}
+            onRemove={removeTrack}
           />
           <Playlist
             playlistName={playlistName}
@@ -77,6 +86,7 @@ function App() {
               return getUserCustomTrack(track)
             })}
             onAdd={addTrack}
+            onRemove={removeTrack}
           />
         </div>
       </div>

@@ -5,14 +5,18 @@ import { TrackType, userCustomTrack } from "../../types"
 type Props = {
   track: userCustomTrack
   onAdd: (track: TrackType) => void
+  onRemove: (track: TrackType) => void
 }
 
 export const Track = (props: Props) => {
   const { track, isRemoval } = props.track
-  const { onAdd } = props
+  const { onAdd, onRemove } = props
 
   const handleAddTrack = () => {
     onAdd(track as TrackType)
+  }
+  const handleRemoveTrack = () => {
+    onRemove(track)
   }
   return (
     <div className="Track">
@@ -23,7 +27,9 @@ export const Track = (props: Props) => {
         </p>
       </div>
       {isRemoval ? (
-        <button className="Track-action">-</button>
+        <button className="Track-action" onClick={handleRemoveTrack}>
+          -
+        </button>
       ) : (
         <button className="Track-action" onClick={handleAddTrack}>
           +

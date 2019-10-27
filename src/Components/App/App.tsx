@@ -13,7 +13,7 @@ function App() {
       name: "Fail",
       artist: "Ivan Dorn",
       album: "Wings",
-      id: "125",
+      id: "12",
     },
     {
       name: "Birds",
@@ -26,29 +26,19 @@ function App() {
   const [playlistName, setPlaylistName] = useState<string>("My Playlist")
 
   //TODO: Replace  playlistTracks mock Data
-  const [playlistTracks, setPlaylistTracks] = useState<TrackType[]>([
-    {
-      name: "name1",
-      artist: "artist1",
-      album: "album1",
-      id: "id",
-    },
-    {
-      name: "name2",
-      artist: "artist2",
-      album: "album3",
-      id: "id",
-    },
-  ])
+  const [playlistTracks, setPlaylistTracks] = useState<TrackType[]>([])
+
   /**
-   *Check if the current song is in the playlistTracks state.
-   If the id is new, add the song to the end of the playlist.
+   *Check if the current song is in the playlistTracks state (result).
+   If the id is new, add the song to the end of the playlist. If match result contain object but nothing doing
    Set the new state of the playlist
    * @param track
    */
   const addTrack = (track: TrackType): void => {
     const result: TrackType | undefined = playlistTracks.find(savedTrack => savedTrack.id === track.id)
-    if (result) setPlaylistTracks([...playlistTracks, result])
+    if (!Boolean(result)) {
+      setPlaylistTracks([...playlistTracks, track])
+    }
   }
   /**
    * If the current song is in the playlistTracks state, return true (button with -)

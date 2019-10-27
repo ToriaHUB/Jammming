@@ -9,6 +9,11 @@ type Props = {
 
 export const Track = (props: Props) => {
   const { track, isRemoval } = props.track
+  const { onAdd } = props
+
+  const handleAddTrack = () => {
+    onAdd(track as TrackType)
+  }
   return (
     <div className="Track">
       <div className="Track-information">
@@ -17,7 +22,13 @@ export const Track = (props: Props) => {
           {track.artist} | {track.album}{" "}
         </p>
       </div>
-      {isRemoval ? <button className="Track-action">-</button> : <button className="Track-action">+</button>}
+      {isRemoval ? (
+        <button className="Track-action">-</button>
+      ) : (
+        <button className="Track-action" onClick={handleAddTrack}>
+          +
+        </button>
+      )}
     </div>
   )
 }

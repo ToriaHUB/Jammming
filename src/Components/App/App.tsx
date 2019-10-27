@@ -48,6 +48,9 @@ function App() {
       setPlaylistTracks(result)
     }
   }
+  const updatePlaylistName = (name: string): void => {
+    setPlaylistName(name)
+  }
   /**
    * If the current song is in the playlistTracks state, return true (button with -)
    * @param track
@@ -87,6 +90,7 @@ function App() {
             })}
             onAdd={addTrack}
             onRemove={removeTrack}
+            onNameChange={updatePlaylistName}
           />
         </div>
       </div>

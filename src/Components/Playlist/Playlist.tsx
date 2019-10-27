@@ -8,13 +8,18 @@ type Props = {
   playlistTracks: userCustomTrack[]
   onAdd: (track: TrackType) => void
   onRemove: (track: TrackType) => void
+  onNameChange: (name: string) => void
 }
 
 export const Playlist = (props: Props) => {
-  const { playlistName, playlistTracks, onAdd, onRemove } = props
+  const { playlistName, playlistTracks, onAdd, onRemove, onNameChange } = props
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onNameChange(event.target.value)
+  }
   return (
     <div className="Playlist">
-      <input defaultValue={playlistName} />
+      <input defaultValue={playlistName} onChange={handleNameChange} />
       <TrackList tracks={playlistTracks} onAdd={onAdd} onRemove={onRemove} />
       <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>

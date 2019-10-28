@@ -14,12 +14,14 @@ function App() {
       artist: "Ivan Dorn",
       album: "Wings",
       id: "12",
+      uri: "fgdfd",
     },
     {
       name: "Birds",
       artist: "Imagine Dragons",
       album: "Zero",
       id: "125",
+      uri: "trhh",
     },
   ])
   //TODO: Replace  playlistName mock Data
@@ -50,6 +52,10 @@ function App() {
   }
   const updatePlaylistName = (name: string): void => {
     setPlaylistName(name)
+  }
+  const savePlaylist = (): void => {
+    alert("im ok")
+    const trackURIs = playlistTracks.map(track => track.uri)
   }
   /**
    * If the current song is in the playlistTracks state, return true (button with -)
@@ -91,6 +97,7 @@ function App() {
             onAdd={addTrack}
             onRemove={removeTrack}
             onNameChange={updatePlaylistName}
+            onSave={savePlaylist}
           />
         </div>
       </div>

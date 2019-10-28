@@ -3,6 +3,7 @@ export type TrackType = {
   artist: string
   album: string
   id: string
+  uri: string
 }
 export type userCustomTrack = {
   track: TrackType

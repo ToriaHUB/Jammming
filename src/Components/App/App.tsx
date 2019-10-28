@@ -42,6 +42,7 @@ function App() {
       setPlaylistTracks([...playlistTracks, track])
     }
   }
+
   const removeTrack = (track: TrackType): void => {
     const result = playlistTracks.filter(savedTrack => {
       return savedTrack.id !== track.id
@@ -50,25 +51,35 @@ function App() {
       setPlaylistTracks(result)
     }
   }
+
   const updatePlaylistName = (name: string): void => {
     setPlaylistName(name)
   }
+
   const savePlaylist = (): void => {
     alert("im ok")
     const trackURIs = playlistTracks.map(track => track.uri)
   }
+
+  const search = (term: string) => {
+    console.log(term)
+  }
+
   /**
    * If the current song is in the playlistTracks state, return true (button with -)
    * @param track
    */
+
   const getRemovalStatus = (track: TrackType): boolean | undefined => {
     const status = playlistTracks.find(savedTrack => savedTrack.id === track.id)
     return Boolean(status)
   }
+
   /**
    * Return a new object with removal status
    * @param track
    */
+
   const getUserCustomTrack = (track: TrackType): userCustomTrack => {
     const isRemoval = getRemovalStatus(track)
     return { track, isRemoval }
@@ -80,7 +91,7 @@ function App() {
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        <SearchBar />
+        <SearchBar onSearch={search} />
         <div className="App-playlist">
           <SearchResults
             searchResults={searchResults.map(track => {

@@ -1,11 +1,12 @@
 import React from "react"
+import { SpotifyTracks } from "../types"
 
 /**
  * The method will get a user’s access token so that they can make requests to the Spotify API
  */
 let accessToken: string
 export const Spotify = {
-  getAcceessToken() {
+  getAccessToken() {
     if (accessToken) {
       return accessToken
     }
@@ -24,5 +25,29 @@ export const Spotify = {
       console.log(accessUrl)
       window.location.href = accessUrl
     }
+  },
+  search(term: string) {
+    const accessToken = Spotify.getAccessToken()
+    return fetch(
+      `https://api.spotify.com/v1/search?type=track&q=${term}
+`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    )
+      .then(response => {
+        return response.json()
+      })
+      .then((jsonResponse: SpotifyTracks) => {
+        if (!jsonResponse.tracks) {
+          return []
+        }
+        console.log(jsonResponse)
+        return jsonResponse.tracks.items.map(track => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artists[0].name,
+          album: track.album.name,
+          uri: track.uri,
+        }))
+      })
   },
 }

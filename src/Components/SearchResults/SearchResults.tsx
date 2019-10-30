@@ -1,10 +1,10 @@
 import React from "react"
 import "./SearchResults.css"
 import { TrackList } from "../TrackList/TrackList"
-import { TrackType, userCustomTrack } from "../../types"
+import { TrackType, UserCustomTrack } from "../../types"
 
 type Props = {
-  searchResults: userCustomTrack[]
+  searchResults: UserCustomTrack[]
   onAdd: (track: TrackType) => void
   onRemove: (track: TrackType) => void
 }

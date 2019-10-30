@@ -1,11 +1,11 @@
 import React from "react"
 import "./Playlist.css"
 import { TrackList } from "../TrackList/TrackList"
-import { TrackType, userCustomTrack } from "../../types"
+import { TrackType, UserCustomTrack } from "../../types"
 
 type Props = {
   playlistName: string
-  playlistTracks: userCustomTrack[]
+  playlistTracks: UserCustomTrack[]
   onAdd: (track: TrackType) => void
   onRemove: (track: TrackType) => void
   onNameChange: (name: string) => void

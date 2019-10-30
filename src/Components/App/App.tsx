@@ -4,7 +4,8 @@ import { SearchBar } from "../SearchBar/SearchBar"
 import { SearchResults } from "../SearchResults/SearchResults"
 import { Playlist } from "../Playlist/Playlist"
 import { TrackType } from "../../types"
-import { userCustomTrack } from "../../types"
+import { UserCustomTrack } from "../../types"
+import { Spotify } from "../../util/Spotify"
 
 function App() {
   //TODO: Replace searchResults mock Data
@@ -61,8 +62,8 @@ function App() {
     const trackURIs = playlistTracks.map(track => track.uri)
   }
 
-  const search = (term: string) => {
-    console.log(term)
+  const search = async (term: string) => {
+    setSearchResults(await Spotify.search(term))
   }
 
   /**
@@ -80,7 +81,7 @@ function App() {
    * @param track
    */
 
-  const getUserCustomTrack = (track: TrackType): userCustomTrack => {
+  const getUserCustomTrack = (track: TrackType): UserCustomTrack => {
     const isRemoval = getRemovalStatus(track)
     return { track, isRemoval }
   }

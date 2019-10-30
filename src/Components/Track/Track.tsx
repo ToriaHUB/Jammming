@@ -1,9 +1,9 @@
 import React from "react"
 import "./Track.css"
-import { TrackType, userCustomTrack } from "../../types"
+import { TrackType, UserCustomTrack } from "../../types"
 
 type Props = {
-  track: userCustomTrack
+  track: UserCustomTrack
   onAdd: (track: TrackType) => void
   onRemove: (track: TrackType) => void
 }

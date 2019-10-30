@@ -8,27 +8,10 @@ import { UserCustomTrack } from "../../types"
 import { Spotify } from "../../util/Spotify"
 
 function App() {
-  //TODO: Replace searchResults mock Data
-  const [searchResults, setSearchResults] = useState<TrackType[]>([
-    {
-      name: "Fail",
-      artist: "Ivan Dorn",
-      album: "Wings",
-      id: "12",
-      uri: "fgdfd",
-    },
-    {
-      name: "Birds",
-      artist: "Imagine Dragons",
-      album: "Zero",
-      id: "125",
-      uri: "trhh",
-    },
-  ])
-  //TODO: Replace  playlistName mock Data
+  const [searchResults, setSearchResults] = useState<TrackType[]>([])
+
   const [playlistName, setPlaylistName] = useState<string>("My Playlist")
 
-  //TODO: Replace  playlistTracks mock Data
   const [playlistTracks, setPlaylistTracks] = useState<TrackType[]>([])
 
   /**

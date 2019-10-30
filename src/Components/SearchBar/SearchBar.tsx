@@ -12,7 +12,8 @@ export const SearchBar = (props: Props) => {
   const handleTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.target.value)
   }
-  const handleSearch = () => {
+  const handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     onSearch(term)
   }
 

@@ -40,7 +40,6 @@ export const Spotify = {
         if (!jsonResponse.tracks) {
           return []
         }
-        console.log(jsonResponse)
         return jsonResponse.tracks.items.map(track => ({
           id: track.id,
           name: track.name,

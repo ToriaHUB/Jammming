@@ -2,6 +2,10 @@
   "name": "jammming",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Viktoria Petrenko",
+    "email": "vikuacz@seznam.cz"
+  },
   "dependencies": {
     "@types/node": "^12.7.12",
     "@types/react": "^16.9.6",
